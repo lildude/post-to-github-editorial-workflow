@@ -33,6 +33,10 @@ if lines[0].startswith("#"):
     content = "\n".join(lines[1:])
 else:
     post_type = "note"
+	# Take the first 8 words of the note, strip punctionation and append … if longer
+	words = re.findall(r'[^\s!,.?":;]+', content)
+	post_title = ' '.join(words[:8])
+	if len(words) > 8: post_title += "…"
     slug = str(int(time.strftime('%s', date)) % (24 * 60 * 60))
     commit_msg = "%s - %s" % (post_type, slug)
 
