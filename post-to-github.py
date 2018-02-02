@@ -37,7 +37,7 @@ else:
     words = re.findall(r'[^\s!,.?":;]+', content)
     post_title = ' '.join(words[:8])
     if len(words) > 8: post_title += "…"
-    slug = str(int(time.strftime('%s', date)) % (24 * 60 * 60))
+    slug = str(int(time.strftime('%s', date)) % (28 * 24 * 60 * 60))
     commit_msg = "%s - %s" % (post_type, slug)
 
 post_filename = "%s/%s-%s.md" % (POSTS_DIR, time.strftime('%F', date), slug)
